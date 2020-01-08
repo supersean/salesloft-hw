@@ -1,0 +1,44 @@
+
+
+
+show list of people records from API
+-name
+-email address
+-job title
+
+button, which clicked, gives frequency count of unizue characters across all people emails, sorted
+
+2nd button to show possible duplicates
+
+
+Routes:
+
+/home
+ (includes people widget, frequency widget, and duplicate widget)
+/sign_in
+/sign_up
+/log_out
+
+tests:
+
+level1:
+
+	test unauthenticated user is redirected to sign_up
+	test user can sign_up
+	test user can sign_in and see list of people (name, email addr,  job title) with real calls
+	test view is displayed with mock
+	test user can log_out
+	
+level2:
+	
+	test button exists
+	test frequency algorithm
+	test widget is displayed
+	test widget is refreshed
+
+level3:
+	
+	test button exists
+	test duplicate algorithm
+	test widget is displayed
+	test widget is refreshed
