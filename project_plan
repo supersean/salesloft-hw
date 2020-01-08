@@ -20,10 +20,19 @@ tests:
 
 level1:
 
+	on page:
+
 	test user can see list of people (name, email addr,  job title) with real calls
 	test view is displayed with mock
-	test correct number of users is displayed
 	test pagination is happening
+
+	api:
+
+	(use Webmock)
+	test execution paths through index of users
+	
+	test connection to salesloft
+	test authorization with salesloft
 	
 level2:
 	
@@ -38,3 +47,10 @@ level3:
 	test duplicate algorithm
 	test widget is displayed
 	test widget is refreshed
+
+
+thinking about scaling:
+
+add caching of api requests
+
+test cache somehow

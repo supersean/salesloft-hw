@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import List from './List'
+import axios from 'axios'
 
 const FlexBox = styled.div`
   display: flex;
@@ -28,9 +29,11 @@ class UserList extends React.Component {
 
   // fetch users here
   componentDidMount() {
-    this.setState({
-      users: ["sean", "tyson", "brayden", "aiden"]
-    })
+    axios.get('/api/users')
+      .then(res => {
+        const users = res.data;
+        this.setState({users});
+      })
   }
 
   render() {
