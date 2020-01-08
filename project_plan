@@ -15,19 +15,15 @@ Routes:
 
 /home
  (includes people widget, frequency widget, and duplicate widget)
-/sign_in
-/sign_up
-/log_out
 
 tests:
 
 level1:
 
-	test unauthenticated user is redirected to sign_up
-	test user can sign_up
-	test user can sign_in and see list of people (name, email addr,  job title) with real calls
+	test user can see list of people (name, email addr,  job title) with real calls
 	test view is displayed with mock
-	test user can log_out
+	test correct number of users is displayed
+	test pagination is happening
 	
 level2:
 	

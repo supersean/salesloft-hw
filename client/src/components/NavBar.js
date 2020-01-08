@@ -51,7 +51,9 @@ let UserBadge = ({user}) => (
 
 let NavBar = ({user}) => (
   <StyledNavBar>
-    {user ? <UserBadge user={user} /> : <SignInBadge />}
+    <Badge>
+      Nav bar
+    </Badge>
   </StyledNavBar>
 );
 
