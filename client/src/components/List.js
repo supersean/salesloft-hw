@@ -4,9 +4,11 @@ const List = ({items}) => (
   <div className="single-list">
     <table>
       <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Job Title</th>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Job Title</th>
+        </tr>
       </thead>
       <tbody>
         {items.map( item => {

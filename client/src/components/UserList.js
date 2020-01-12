@@ -23,7 +23,8 @@ class UserList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: []
+      users: [],
+      currentPage: 1
     }
   }
 
@@ -36,12 +37,25 @@ class UserList extends React.Component {
       })
   }
 
+  getPage(page) {
+    axios.get('/api/users', { params: {"page": page}})
+      .then(res => {
+        const users = res.data;
+        this.setState({users, currentPage: page});
+      });
+  };
+
   render() {
     return (
       <FlexBox>
         <div className="UserList">
           <header className="UserList-header">
             <h1 className="UserList-title">Userlist Component</h1>
+            <div>
+              <p>currentPage: {this.state.currentPage}</p>
+              <button onClick={() => this.getPage(this.state.currentPage == 1 ? 1 : this.state.currentPage - 1)}>Previous</button>
+              <button onClick={() => this.getPage(this.state.currentPage + 1)}>Next</button>
+            </div>
             <List items={this.state.users} />
           </header>
         </div>

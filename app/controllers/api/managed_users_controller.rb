@@ -1,7 +1,9 @@
 class Api::ManagedUsersController < Api::BaseController
 
   def index
-    render json: SalesloftService.new.get_users
+    puts params.inspect
+    query = { page: params[:page], per_page: 10 }
+    render json: ManagedUserRepository.new(SalesloftService.new).get_users(query)
   end
 
 end

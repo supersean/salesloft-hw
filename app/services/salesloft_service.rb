@@ -1,17 +1,37 @@
 class SalesloftService
+  include HTTParty
+  base_uri 'api.salesloft.com'
 
-  def get_users
-    get_test_users
+  def initialize
+    @options = {
+      headers: {
+        "Authorization" => "Bearer #{ENV['SALESLOFT_APPLICATION_API_KEY']}"
+      }
+    }
+  end
+
+  def get_users query
+    @options[:query] = query
+    users = get_salesloft_users 
+    puts users.inspect
+    users
   end
 
   private 
 
     def get_salesloft_users
+      response = self.class.get("/v2/people", @options)
+      users = []
+      case response.code
+        when 200
+          users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
+      end
+      users
     end
 
     def get_test_users
       [
-        { name: "sean davis",
+        { name: "brandon davis",
           id: '1',
           email: "sdavis@gmail.com",
           job_title: "scientist" 
