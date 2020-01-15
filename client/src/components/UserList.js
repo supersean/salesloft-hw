@@ -30,17 +30,14 @@ class UserList extends React.Component {
 
   // fetch users here
   componentDidMount() {
-    axios.get('/api/users')
-      .then(res => {
-        const users = res.data;
-        this.setState({users});
-      })
+    this.getPage(1);
   }
 
   getPage(page) {
     axios.get('/api/users', { params: {"page": page}})
       .then(res => {
-        const users = res.data;
+        const users = res.data.users;
+        const errors = res.data.errors;
         this.setState({users, currentPage: page});
       });
   };

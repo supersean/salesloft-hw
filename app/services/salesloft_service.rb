@@ -12,21 +12,27 @@ class SalesloftService
 
   def get_users query
     @options[:query] = query
-    users = get_salesloft_users 
-    puts users.inspect
-    users
+    response = get_salesloft_users 
+    users = []
+    errors = []
+    
+    unless response.parsed_response["data"].nil?
+      users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
+    end
+
+    unless response.parsed_response["error"].nil?
+      errors.push response.parsed_response["error"]
+    end
+
+    return { users: users, errors: errors }
   end
 
   private 
 
     def get_salesloft_users
       response = self.class.get("/v2/people", @options)
-      users = []
-      case response.code
-        when 200
-          users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
-      end
-      users
+      users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
+      response
     end
 
     def get_test_users
