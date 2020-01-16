@@ -48,7 +48,9 @@ class LetterFrequency extends React.Component {
     return (
       <FlexBox>
         <div className="LetterFrequncies">
-          <h1 className="LetterFrequencies-title">Letter Frequencies</h1>
+          <header>
+            <h1 className="LetterFrequencies-title">Letter Frequencies</h1>
+          </header>
           <button onClick={() => this.getLetterFrequencies()}>Get Letter Frequencies</button>
           <List 
             list_id="letters" 

@@ -6,7 +6,7 @@ describe('Poeple Managment Tests', function() {
     it('can paginate through list of people returned', function() {
       cy.visit('localhost:5000/')
       cy.contains('Next').click()
-      cy.contains('currentPage: 2')
+      cy.contains('Page: 2')
     })
   })
   

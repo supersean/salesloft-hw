@@ -8,3 +8,41 @@ body {
   height: 100%;
   width: 100%;
 }
+
+td, th {
+  text-align:left;
+  padding:5px;
+}
+
+th {
+  background-color: lightcyan;
+}
+
+tr {
+  background-color: lightgrey;
+}
+
+.Duplicates, .UserList, .LetterFrequencies {
+  padding: 10px;
+}
+
+table {
+  margin-left: 10px;
+}
+
+button {
+  padding: 10px 5px 10px 5px;background-color: cadetblue;
+  color: white;
+  padding: 10px 5px 10px 5px;
+  border: none;
+  margin: 10px;
+  width: 150px;
+}
+
+.UserList p, h1 {
+  margin-left: 10px;
+}
+
+.UserList p {
+  display:inline;
+}

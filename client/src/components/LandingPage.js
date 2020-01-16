@@ -15,7 +15,7 @@ const Page = styled.div`
 
 const FlexBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 
@@ -25,7 +25,9 @@ export const LandingPage = () => (
     <FlexBox>
       <UserList />
       <LetterFrequency />
-    <Duplicates></Duplicates>
+    </FlexBox>
+    <FlexBox>
+      <Duplicates></Duplicates>
     </FlexBox>
   </Page>
 );

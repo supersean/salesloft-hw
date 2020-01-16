@@ -51,9 +51,9 @@ class UserList extends React.Component {
             <h1 className="UserList-title">People</h1>
           </header>
           <div>
-            <p>currentPage: {this.state.currentPage}</p>
             <button onClick={() => this.getPage(this.state.currentPage == 1 ? 1 : this.state.currentPage - 1)}>Previous</button>
             <button onClick={() => this.getPage(this.state.currentPage + 1)}>Next</button>
+            <p>Page: {this.state.currentPage}</p>
           </div>
           <List 
             list_id="people" 
