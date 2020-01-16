@@ -47,3 +47,12 @@ bundle exec foreman start
 ```
 8.) Navigate to localhost:5000
 
+
+*** Integration Tests **
+
+I tested the controller routes via Cypress
+
+    ./node_modules/.bin/cypress open
+
+to start
+
