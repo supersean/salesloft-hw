@@ -10,12 +10,13 @@ describe('Poeple Managment Tests', function() {
     })
   })
   
-
+  // these dont seem to work very well
   describe('Frequency counts', function() {
     it('shows a list of letter frequencies', function() {
       cy.visit('localhost:5000')
       cy.get('.LetterFrequncies')
       cy.contains('Get Letter Frequencies').click()
+      cy.get('.LetterFrequencies tbody ').should('not.have.length', 0)
     })
   })
 
@@ -24,6 +25,7 @@ describe('Poeple Managment Tests', function() {
       cy.visit('localhost:5000')
       cy.get('.Duplicates')
       cy.contains('Get Duplicates').click()
+      cy.get('.Duplicates tbody').should('not.have.length', 0)
     })
   })
 })
