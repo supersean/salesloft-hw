@@ -11,10 +11,14 @@ class Api::ManagedUsersController < Api::BaseController
   end
 
 
+  # these 2 methods dont exactly have clever algorithms but
+  # most of the time
+  # these take to run is from making the requests
   def letter_frequencies
     response = get_all_users
     users = response[:users]
     frequencies = Hash.new(0)
+    debugger
     users.each do |user|
       user[:email].split("").each do |char|
         list = add_frequency_to_list(frequencies, char)
@@ -31,8 +35,12 @@ class Api::ManagedUsersController < Api::BaseController
     response = get_all_users
     users = response[:users]
     entries = []
+    debugger
     users.each do |user|
       entries.each do |entry|
+    # this doesn't work very well for short email addresses
+    # maybe tune it to total distance as a percentage of the 
+    # length of the email address
         if get_duplicate_likelihood(user[:email], entry[:base]) < 3 
           entry[:duplicates].push user[:email]
           next
