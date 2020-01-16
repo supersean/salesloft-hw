@@ -52,7 +52,7 @@ class LetterFrequency extends React.Component {
           <button onClick={() => this.getLetterFrequencies()}>Get Letter Frequencies</button>
           <List 
             list_id="letters" 
-            items={Object.keys(this.state.letterFrequencies).map( (k, i) => [i, k, this.state.letterFrequencies[k]])}
+            items={this.state.letterFrequencies.map( (n, i) => [i, n[0], n[1]])}
             headers={["Char", "Count"]}
           />
           <div className="Errors">

@@ -18,4 +18,12 @@ describe('Poeple Managment Tests', function() {
       cy.contains('Get Letter Frequencies').click()
     })
   })
+
+  describe('Duplicates', function() {
+    it('shows a list of possible duplicates', function() {
+      cy.visit('localhost:5000')
+      cy.get('.Duplicates')
+      cy.contains('Get Duplicates').click()
+    })
+  })
 })

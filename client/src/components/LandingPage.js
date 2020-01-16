@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { ConnectedNavBar } from '../containers/ConnectedNavBar'
 import UserList from './UserList'
 import LetterFrequency from './LetterFrequency'
+import Duplicates from './Duplicates';
 
 const Page = styled.div`
   display: grid;
@@ -23,9 +24,8 @@ export const LandingPage = () => (
     <ConnectedNavBar />
     <FlexBox>
       <UserList />
-    </FlexBox>
-    <FlexBox>
       <LetterFrequency />
+    <Duplicates></Duplicates>
     </FlexBox>
   </Page>
 );

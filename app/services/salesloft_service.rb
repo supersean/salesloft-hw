@@ -24,7 +24,7 @@ class SalesloftService
       errors.push response.parsed_response["error"]
     end
 
-    return { users: users, errors: errors }
+    return { users: users, errors: errors, metadata: response["metadata"].deep_symbolize_keys }
   end
 
   private 

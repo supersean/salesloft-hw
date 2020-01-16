@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get :me, to: 'me#me'
     get :users, to: 'managed_users#index'
     get :letter_frequencies, to: 'managed_users#letter_frequencies'
+    get :duplicates, to: 'managed_users#duplicates'
   end
 
   root to: "main#index"

@@ -24,7 +24,8 @@ class UserList extends React.Component {
     super(props)
     this.state = {
       users: [],
-      currentPage: 1
+      currentPage: 1,
+      errors: []
     }
   }
 
@@ -47,21 +48,21 @@ class UserList extends React.Component {
       <FlexBox>
         <div className="UserList">
           <header className="UserList-header">
-            <h1 className="UserList-title">Userlist Component</h1>
-            <div>
-              <p>currentPage: {this.state.currentPage}</p>
-              <button onClick={() => this.getPage(this.state.currentPage == 1 ? 1 : this.state.currentPage - 1)}>Previous</button>
-              <button onClick={() => this.getPage(this.state.currentPage + 1)}>Next</button>
-            </div>
-            <List 
-              list_id="people" 
-              items={this.state.users.map(x => [x.id, x.name, x.email, x.job_title])}
-              headers={["Name", "Email", "Job Title"]}
-             />
-             <div className='userlist-errors'>
-               {this.state.errors}
-             </div>
+            <h1 className="UserList-title">People</h1>
           </header>
+          <div>
+            <p>currentPage: {this.state.currentPage}</p>
+            <button onClick={() => this.getPage(this.state.currentPage == 1 ? 1 : this.state.currentPage - 1)}>Previous</button>
+            <button onClick={() => this.getPage(this.state.currentPage + 1)}>Next</button>
+          </div>
+          <List 
+            list_id="people" 
+            items={this.state.users.map(x => [x.id, x.name, x.email, x.job_title])}
+            headers={["Name", "Email", "Job Title"]}
+            />
+            <div className='userlist-errors'>
+              {this.state.errors}
+            </div>
         </div>
       </FlexBox>
     )
