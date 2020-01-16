@@ -38,7 +38,7 @@ class UserList extends React.Component {
       .then(res => {
         const users = res.data.users;
         const errors = res.data.errors;
-        this.setState({users, currentPage: page});
+        this.setState({users, currentPage: page, errors});
       });
   };
 
@@ -53,7 +53,14 @@ class UserList extends React.Component {
               <button onClick={() => this.getPage(this.state.currentPage == 1 ? 1 : this.state.currentPage - 1)}>Previous</button>
               <button onClick={() => this.getPage(this.state.currentPage + 1)}>Next</button>
             </div>
-            <List items={this.state.users} />
+            <List 
+              list_id="people" 
+              items={this.state.users.map(x => [x.id, x.name, x.email, x.job_title])}
+              headers={["Name", "Email", "Job Title"]}
+             />
+             <div className='userlist-errors'>
+               {this.state.errors}
+             </div>
           </header>
         </div>
       </FlexBox>

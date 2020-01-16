@@ -15,7 +15,7 @@ class SalesloftService
     response = get_salesloft_users 
     users = []
     errors = []
-    
+    return {users: [], errors: response[:errors]} unless response[:errors].nil?
     unless response.parsed_response["data"].nil?
       users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
     end
@@ -30,9 +30,24 @@ class SalesloftService
   private 
 
     def get_salesloft_users
-      response = self.class.get("/v2/people", @options)
-      users = response.parsed_response["data"].map {|x| {id: x["id"], name: x["display_name"],email: x["email_address"], job_title: x["title"]} }
-      response
+      begin
+        response = self.class.get("/v2/people", @options)
+        case response.code
+          when 200
+            puts "ALL GOOD"
+          when 404
+            puts "not found"
+            return {errors: ["Not found"]}
+          when 500..600
+            puts "ERROR"
+            return {errors: ["server error"]}
+        end
+        return response
+      rescue HTTParty::Error
+        return {errors: ["There was an HTTParty error"]}
+      rescue StandardError
+        return {errors: ["There was an HTTParty error"]}
+      end
     end
 
     def get_test_users
